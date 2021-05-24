@@ -21,6 +21,8 @@ import edu.iis.mto.blog.dto.Id;
 import edu.iis.mto.blog.services.BlogService;
 import edu.iis.mto.blog.services.DataFinder;
 
+import javax.persistence.EntityNotFoundException;
+
 @WebMvcTest(BlogApi.class)
 class BlogApiTest {
 
@@ -52,6 +54,19 @@ class BlogApiTest {
 
     @Test
     public void postBlogUserShouldThrowDataIntegrityViolationException() throws Exception {
+        Long userID = 1L;
+        when(finder.getUserData(userID)).thenThrow(EntityNotFoundException.class);
+        String content = writeJson(userID);
+
+        mvc.perform(post("/user/{id}",userID)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+                .content(content))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void getBlogUserWhenThereIsNoSuchUserInDatabaseShouldReturnHTTPCode404() throws Exception {
         Long newUserId = 1L;
         UserRequest user = new UserRequest();
         user.setEmail("john@domain.com");
@@ -65,7 +80,6 @@ class BlogApiTest {
                 .content(content))
                 .andExpect(status().isConflict());
     }
-
     private String writeJson(Object obj) throws JsonProcessingException {
         return new ObjectMapper().writer()
                                  .writeValueAsString(obj);
