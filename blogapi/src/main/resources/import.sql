@@ -11,8 +11,8 @@ insert into like_post (id, post_id, user_id) values (1, 1, 10)
 insert into user (id, account_status, email, first_name) values (11,'REMOVED', 'delted@domain.com', 'SAS')
 insert into blog_post (id, entry, user_id) values (2, 'usuniety', 11)
 
-insert into user (id, account_status, email, first_name) values (13,'CONFIRMED', 'newauthor@domain.com', 'SAS')
-insert into user (id, account_status, email, first_name) values (12,'CONFIRMED', 'git@domain.com', 'SAS')
+insert into user (id, account_status, email, first_name) values (13,'CONFIRMED', 'newauthor@domain.com', 'Adi')
+insert into user (id, account_status, email, first_name) values (12,'CONFIRMED', 'git@domain.com', 'Mati')
 insert into blog_post (id, entry, user_id) values (3, 'post z 3 lajkami', 13)
 insert into blog_post (id, entry, user_id) values (4, 'post 2', 13)
 
