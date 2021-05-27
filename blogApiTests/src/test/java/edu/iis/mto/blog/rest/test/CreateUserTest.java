@@ -28,16 +28,17 @@ class CreateUserTest extends FunctionalTests {
 
     @Test
     void createUserWithEmailThatIsInDataBaseShouldReturn() {
+//        JSONObject jsonObj = new JSONObject().put("email", "tracy1@domain.com");
+//        given().accept(ContentType.JSON)
+//                .header("Content-Type", "application/json;charset=UTF-8")
+//                .body(jsonObj.toString())
+//                .expect()
+//                .log()
+//                .all()
+//                .statusCode(HttpStatus.SC_CREATED)
+//                .when()
+//                .post(USER_API);
         JSONObject jsonObj = new JSONObject().put("email", "tracy1@domain.com");
-        given().accept(ContentType.JSON)
-                .header("Content-Type", "application/json;charset=UTF-8")
-                .body(jsonObj.toString())
-                .expect()
-                .log()
-                .all()
-                .statusCode(HttpStatus.SC_CREATED)
-                .when()
-                .post(USER_API);
         given().accept(ContentType.JSON)
                 .header("Content-Type", "application/json;charset=UTF-8")
                 .body(jsonObj.toString())

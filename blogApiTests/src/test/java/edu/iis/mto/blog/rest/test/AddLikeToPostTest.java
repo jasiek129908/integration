@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import io.restassured.http.ContentType;
 
-public class AddLikeToPostTest {
+public class AddLikeToPostTest extends FunctionalTests{
 
     private static final String ADD_LIKE_TO_POST_API = "/blog/user/{userId}/like/{postId}";
 
